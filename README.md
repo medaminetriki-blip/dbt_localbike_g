@@ -1,15 +1,50 @@
-Welcome to your new dbt project!
+# 🚲 Local Bike – Projet DBT
 
-### Using the starter project
+## 📌 Description du projet
+Ce projet DBT a pour objectif de structurer, tester et documenter les données brutes de Local Bike afin de fournir une base analytique fiable permettant d’optimiser les ventes, les opérations et les revenus de l’entreprise. 
 
-Try running the following commands:
-- dbt run
-- dbt test
+---
 
+## 🏢 Contexte métier
+Local Bike est une entreprise fondée par Alexander Anthony, ancien cycliste professionnel, avec la mission de démocratiser l’usage du vélo et de promouvoir les mobilités douces aux États‑Unis.  
+L’entreprise est implantée dans trois villes stratégiques : **Santa Cruz**, **Baldwin** et **Rowlett**, choisies pour leur potentiel de développement de la culture cycliste. 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Local Bike souhaite devenir une entreprise **data-driven** et s'appuie sur un premier projet analytique pour structurer ses données, mieux comprendre ses performances et soutenir son développement. 
+
+---
+
+## 🎯 Objectifs du projet
+
+### Objectifs business
+- Optimiser les ventes et maximiser les revenus.  
+- Améliorer les processus opérationnels dans les magasins.  
+- Fournir des **insights stratégiques** à l’équipe des opérations.  
+- Soutenir la mission de Local Bike : développer une communauté cycliste durable et active. 
+
+### Objectifs techniques
+1. **Définition des axes d’analyse** nécessaires au pilotage des opérations.  
+2. **Modélisation des données** :  
+   - Import des données brutes dans BigQuery.  
+   - Construction de modèles DBT (staging → marts).  
+3. Mise en place de **tests de qualité** et d’une **documentation complète**.  
+4. Création de visualisations dans l’outil BI de votre choix (Metabase, Power BI, Tableau).  
+   
+---
+
+## 🗂️ Données disponibles
+
+Le dataset contient les tables suivantes :  
+
+- **customers** : informations clients  
+- **staffs** : employés et managers  
+- **stores** : magasins et contacts  
+- **orders** : commandes  
+- **order_items** : lignes de commande  
+- **products** : produits  
+- **brands** : marques  
+- **categories** : catégories de produits  
+- **stocks** : stocks par magasin et produit  
+
+Ces données serviront à construire les couches **staging**, **intermédiaires** et **marts** dans DBT.
+
+``
