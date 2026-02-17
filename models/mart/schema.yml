@@ -1,0 +1,9 @@
+version: 2
+
+models:
+    - name: mrt_kpi_category_revenue
+      description: "Revenu par catégorie de produit"
+    - name: mrt_kpi_staff_revenue
+      description: "Revenu par vendeur (staff) et par magasin"
+    - name: mrt_kpi_store_monthly_revenue
+      description: "Chiffre d’affaires mensuel par magasin"
