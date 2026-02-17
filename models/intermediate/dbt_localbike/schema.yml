@@ -1,0 +1,5 @@
+version: 2
+
+models:
+    - name: int_sales_enriched
+      description: "enrichit chaque ligne de commande avec toutes les dimensions utiles (store, staff, product, category)."
