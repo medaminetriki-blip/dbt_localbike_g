@@ -1,0 +1,77 @@
+version: 2
+
+sources:
+  - name: dbt_localbike
+    description: >
+      Données brutes de l'entreprise Local Bike (retail, clients, produits,
+      commandes, magasins et stocks).
+    tables:
+      - name: brands
+        description: Table de référence des marques des produits.
+        columns:
+          - name: brand_id
+            description: Identifiant unique de la marque.
+            tests:
+              - not_null
+              - unique
+      - name: categories
+        description: Table de référence des catégories de produits. 
+        columns:
+          - name: category_id
+            description: Identifiant unique de la catégorie.
+            tests:
+              - not_null
+              - unique
+      - name: customers
+        description: Table des clients de Local Bike. 
+        columns:
+          - name: customer_id
+            description: Identifiant unique du client.
+            tests:
+              - not_null
+              - unique
+      - name: order_items
+        description: Détail des lignes de commande. 
+        columns:
+          - name: item_id
+            description: Identifiant unique de la ligne de commande. 
+            tests:
+              - not_null
+      - name: orders
+        columns:
+          - name: order_id
+            description: Identifiant unique de la commande. 
+            tests:
+              - not_null
+              - unique
+      - name: products
+        description: Table des produits vendus par Local Bike.
+        columns:
+          - name: product_id
+            description: Identifiant unique du produit.
+            tests:
+              - not_null
+              - unique
+      - name: staffs
+        description: Table des employés de Local Bike. 
+        columns:
+          - name: staff_id
+            description: Identifiant unique de l’employé.
+            tests:
+              - not_null
+              - unique
+      - name: stocks
+        description: Stocks par produit et par magasin. 
+        columns:
+          - name: store_id
+            description: Identifiant du magasin. 
+          - name: product_id
+            description: Identifiant du produit.
+      - name: stores
+        description: Table des magasins Local Bike. 
+        columns:
+          - name: store_id
+            description: Identifiant unique du magasin.
+            tests:
+              - not_null
+              - unique
