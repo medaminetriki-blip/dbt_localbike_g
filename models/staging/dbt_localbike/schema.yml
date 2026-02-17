@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: stg_dbt_localbike__customers
+    description: >
+      Vue standardisée des clients Local Bike (naming, types, qualité). 
+    columns:
+      - name: customer_id
+        description: Identifiant unique du client. 
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: Magasin de rattachement du client.
+      - name: email
+        tests:
+          - not_null
+      - name: state
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['NY', 'CA', 'TX']   # ce qu’on voit dans les données
+
+
+  - name: stg_dbt_localbike__stores
+    description: Vue standardisée des magasins Local Bike. 
+    columns:
+      - name: store_id
+        description: Identifiant unique du magasin. 
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_dbt_localbike__products
+    description: >
+      Vue standardisée des produits, avec clés vers marque et catégorie. 
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+      - name: brand_id
+      - name: category_id
+
+  - name: stg_dbt_localbike__orders
+    description: Vue standardisée des commandes (niveau header). 
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_dbt_localbike__customers')
+                field: customer_id
+
+      - name: store_id
+      - name: staff_id      
+      - name: order_status
+
+
+  - name: stg_dbt_localbike__order_items
+    description: >
+      Vue standardisée des lignes de commande, une ligne par produit et par commande. 
+    columns:
+      - name: item_id
+        tests:
+          - not_null
+      - name: order_id
+      - name: product_id
+
+  - name: stg_dbt_localbike__brands
+    description: Vue standardisée des marques. 
+    columns:
+      - name: brand_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_dbt_localbike__categories
+    description: Vue standardisée des catégories de produits. 
+    columns:
+      - name: category_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_dbt_localbike__staffs
+    description: Vue standardisée des employés Local Bike. 
+    columns:
+      - name: staff_id
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+
+  - name: stg_dbt_localbike__stocks
+    description: Vue standardisée des stocks par produit et magasin. 
+    columns:
+      - name: store_id
+      - name: product_id
